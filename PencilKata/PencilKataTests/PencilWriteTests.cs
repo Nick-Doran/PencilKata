@@ -54,6 +54,12 @@ namespace PencilKataTests
             Assert.AreEqual(0,pencil.CharacterCount(" "));
         }
 
+        [TestMethod]
+        public void PencilCharacterCountWillCountCharactersInAStringWithSpaces()
+        {
+            Assert.AreEqual(2, pencil.CharacterCount("t t"));
+        }
+
 
     }
 }
