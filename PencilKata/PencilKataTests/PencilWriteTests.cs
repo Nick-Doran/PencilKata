@@ -43,9 +43,15 @@ namespace PencilKataTests
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodReturnsCountOfCharactersInAString()
+        public void PencilCharacterCountMethodReturnsCountOfCharactersInAStringTest()
         {
             Assert.AreEqual(5, pencil.CharacterCount("hello"));
+        }
+
+        [TestMethod]
+        public void PencilCharacterCountMethodDoesNotCountSpacesInReturnedCharacterCountTest()
+        {
+            Assert.AreEqual(0,pencil.CharacterCount(" "));
         }
 
 

@@ -8,3 +8,4 @@ C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.AssemblyInfo.cs
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.dll
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.pdb
+C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.csprojAssemblyReference.cache
