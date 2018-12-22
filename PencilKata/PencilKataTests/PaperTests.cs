@@ -23,7 +23,6 @@ namespace PencilKataTests
         public void PaperTextPropertyStartsAsNullTest()
         {
             Assert.AreEqual(null, paper.Text);
-
         }
 
         [TestMethod]
@@ -31,6 +30,7 @@ namespace PencilKataTests
         {
             Assert.AreEqual(pencil.Write("1", paper),paper.Text);
         }
+
         [TestMethod]
         public void PaperTextPropertyHoldsTextFromMulitipleWrites()
         {
