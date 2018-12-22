@@ -10,18 +10,28 @@ namespace PencilKataTests
     public class PaperTests
     {
         Paper paper;
+        Pencil pencil;
 
         [TestInitialize]
         public void Initialize()
         {
             paper = new Paper();
+            pencil = new Pencil();
         }
 
         [TestMethod]
-        public void PaperTextPropertyStartsAsNull()
+        public void PaperTextPropertyStartsAsNullTest()
         {
             Assert.AreEqual(null, paper.Text);
 
         }
+
+        [TestMethod]
+        public void PaperTextPropertyHoldsTextPassedToItTest()
+        {
+            Assert.AreEqual(pencil.Write("1", paper),paper.Text);
+        }
+
+
     }
 }
