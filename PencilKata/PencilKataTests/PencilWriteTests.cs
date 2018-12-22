@@ -15,9 +15,16 @@ namespace PencilKataTests
            
         }
         [TestMethod]
-        public void PencilWriteMethodReturnsAString()
+        public void PencilWriteMethodReturnsAStringTest()
         {
             Assert.AreEqual("", pencil.Write(""));
         }
+        [TestMethod]
+        public void PencilWriteMethodReturnsStringItWasPassedTest()
+        {
+            string testString = "test string";
+            Assert.AreEqual(testString, pencil.Write("test string"));
+        }
+
     }
 }
