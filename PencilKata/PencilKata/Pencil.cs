@@ -12,5 +12,9 @@ namespace PencilKata
             return paper.Text;
         }
 
+        public int CharacterCount(string text)
+        {
+            return text.Length;
+        }
     }
 }
