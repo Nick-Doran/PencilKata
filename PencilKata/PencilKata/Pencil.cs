@@ -6,11 +6,10 @@ namespace PencilKata
 {
     public class Pencil
     {
-    public string Write(string textToWrite)
+        public string Write(string textToWrite, Paper paper)
         {
-            string result ="";
-            result += textToWrite;
-            return result;
+            paper.Text += textToWrite;
+            return paper.Text;
         }
 
     }
