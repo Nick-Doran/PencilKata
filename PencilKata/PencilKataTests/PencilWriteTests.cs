@@ -19,27 +19,27 @@ namespace PencilKataTests
         [TestMethod]
         public void PencilWriteMethodReturnsAStringTest()
         {
-            Assert.AreEqual("", pencil.Write("", paper));
+            Assert.AreEqual("", pencil.Write("", paper, out int characterCount));
         }
 
         [TestMethod]
         public void PencilWriteMethodReturnsStringItWasPassedTest()
         {
             string testString = "test string";
-            Assert.AreEqual(testString, pencil.Write("test string", paper));
+            Assert.AreEqual(testString, pencil.Write("test string", paper, out int characterCount));
         }
 
         [TestMethod]
         public void PencilWriteAppendsStringItWasPassedToPreviousStringTest()
         {
-            Assert.AreEqual("test string", pencil.Write("test string", paper));
-            Assert.AreEqual(pencil.Write("!", paper), "test string!");
+            Assert.AreEqual("test string", pencil.Write("test string", paper, out int characterCount));
+            Assert.AreEqual(pencil.Write("!", paper, out characterCount), "test string!");
         }
 
         [TestMethod]
         public void PencilWriteMethodCanHandleSpacesTest()
         {
-            Assert.AreEqual(" ", pencil.Write(" ", paper));
+            Assert.AreEqual(" ", pencil.Write(" ", paper, out int characterCount));
         }
 
         [TestMethod]
@@ -55,10 +55,19 @@ namespace PencilKataTests
         }
 
         [TestMethod]
-        public void PencilCharacterCountWillCountCharactersInAStringWithSpaces()
+        public void PencilCharacterCountWillCountCharactersInAStringWithSpacesTest()
         {
             Assert.AreEqual(2, pencil.CharacterCount("t t"));
         }
+
+        [TestMethod]
+        public void PencilWriteMethodPassOutTheNumberOfCharactersWrittenTest()
+        {
+            pencil.Write("hello", paper, out int characterCount);
+            Assert.AreEqual(5, characterCount);
+        }
+
+       
 
 
     }

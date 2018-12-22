@@ -6,8 +6,15 @@ namespace PencilKata
 {
     public class Pencil
     {
-        public string Write(string textToWrite, Paper paper)
+        public Pencil()
         {
+            RemainingDurability = 10;
+        }
+        public int RemainingDurability { get; set; }
+
+        public string Write(string textToWrite, Paper paper, out int characterCount)
+        {
+            characterCount = CharacterCount(textToWrite);
             paper.Text += textToWrite;
             return paper.Text;
         }
