@@ -3,7 +3,6 @@ C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\bin\Debug\
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\bin\Debug\netcoreapp2.1\PencilKata.runtimeconfig.dev.json
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\bin\Debug\netcoreapp2.1\PencilKata.dll
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\bin\Debug\netcoreapp2.1\PencilKata.pdb
-C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.csprojAssemblyReference.cache
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.csproj.CoreCompileInputs.cache
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.AssemblyInfoInputs.cache
 C:\Users\doran_000\Documents\AA Repo\PencilKata\PencilKata\PencilKata\obj\Debug\netcoreapp2.1\PencilKata.AssemblyInfo.cs

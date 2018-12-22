@@ -27,7 +27,7 @@ namespace PencilKataTests
             Assert.AreEqual(testString, pencil.Write("test string", paper));
         }
         [TestMethod]
-        public void PencilWriteAppendsStringItWasPassedToPreviousString()
+        public void PencilWriteAppendsStringItWasPassedToPreviousStringTest()
         {
             Assert.AreEqual("test string", pencil.Write("test string", paper));
             Assert.AreEqual(pencil.Write("!", paper), "test string!");
