@@ -15,6 +15,7 @@ namespace PencilKata
         public string Write(string textToWrite, Paper paper, out int characterCount)
         {
             characterCount = CharacterCount(textToWrite);
+            this.RemainingDurability -= characterCount;
             paper.Text += textToWrite;
             return paper.Text;
         }

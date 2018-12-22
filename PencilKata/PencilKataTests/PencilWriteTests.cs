@@ -67,6 +67,13 @@ namespace PencilKataTests
             Assert.AreEqual(5, characterCount);
         }
 
+        [TestMethod]
+        public void PencilWriteMethodDegradesPencilPointByTheIntReturnedByCharacterCountMethodTest()
+        {
+            pencil.Write("hello!", paper, out int characterCount);
+            Assert.AreEqual(4, pencil.RemainingDurability);
+
+        }
        
 
 
