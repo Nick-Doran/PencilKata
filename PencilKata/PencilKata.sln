@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata", "PencilKata\PencilKata.csproj", "{AC7B0538-831B-4F39-B20F-9ED7ADC5E4D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC7B0538-831B-4F39-B20F-9ED7ADC5E4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC7B0538-831B-4F39-B20F-9ED7ADC5E4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC7B0538-831B-4F39-B20F-9ED7ADC5E4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC7B0538-831B-4F39-B20F-9ED7ADC5E4D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5834188F-D872-4B6D-A968-8644E77062E9}
+	EndGlobalSection
+EndGlobal
