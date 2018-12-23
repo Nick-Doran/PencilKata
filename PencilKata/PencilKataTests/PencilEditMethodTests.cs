@@ -20,7 +20,7 @@ namespace PencilKataTests
         }
 
         [TestMethod]
-        public void PencilEditMethodRemovesAStringFromtheTextPropertyOfParameterPaper()
+        public void PencilEditMethodRemovesAStringFromtheTextPropertyOfParameterPaperTest()
         {
             paper.Text = "text";
             pencil.Edit(paper, "text");
@@ -29,7 +29,9 @@ namespace PencilKataTests
         [TestMethod]
         public void PencilEditMethodFindsTheLastInstanceOfTheSpecifiedStringTest()
         {
-           
+            paper.Text = "text text";
+            pencil.Edit(paper, "text");
+            Assert.AreEqual("text     ", paper.Text);
 
         }
     }
