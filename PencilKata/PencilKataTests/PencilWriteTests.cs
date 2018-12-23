@@ -19,90 +19,97 @@ namespace PencilKataTests
         [TestMethod]
         public void PencilWriteMethodReturnsAStringTest()
         {
-            Assert.AreEqual("", pencil.Write("", paper, out int characterCount));
+            Assert.AreEqual("a", pencil.Write("a", paper, out int remainingDurability));
         }
 
         [TestMethod]
         public void PencilWriteMethodReturnsStringItWasPassedTest()
         {
             string testString = "test string";
-            Assert.AreEqual(testString, pencil.Write("test string", paper, out int characterCount));
+            Assert.AreEqual(testString, pencil.Write("test string", paper, out int remainingDurability));
         }
 
         [TestMethod]
         public void PencilWriteAppendsStringItWasPassedToPreviousStringTest()
         {
-            Assert.AreEqual("test string", pencil.Write("test string", paper, out int characterCount));
-            Assert.AreEqual(pencil.Write("!", paper, out characterCount), "test string!");
+            Assert.AreEqual("test", pencil.Write("test", paper, out int remainingDurability));
+            Assert.AreEqual(pencil.Write("!", paper, out remainingDurability), "test!");
         }
 
         [TestMethod]
         public void PencilWriteMethodCanHandleSpacesTest()
         {
-            Assert.AreEqual(" ", pencil.Write(" ", paper, out int characterCount));
+            Assert.AreEqual(" ", pencil.Write(" ", paper, out int remainingDurability));
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodReturnsCountOfCharactersInAStringTest()
+        public void PencilRemainingDurabilityIsDegradedAfterWritingAStringOfLowercaseCharactersTest()
         {
-            Assert.AreEqual(5, pencil.CharacterCount("hello"));
+            pencil.Write("test", paper, out int remainingDurability);
+            Assert.AreEqual(6, pencil.RemainingDurability);
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodDoesNotCountSpacesInReturnedCharacterCountTest()
+        public void PencilRemainingDurabilityIsNotAffectedBySpacesTest()
         {
-            Assert.AreEqual(0,pencil.CharacterCount(" "));
+            pencil.Write("      ", paper, out int remainingDurability);
+            Assert.AreEqual(10, pencil.RemainingDurability);
         }
 
         [TestMethod]
-        public void PencilCharacterCountWillCountCharactersInAStringWithSpacesTest()
+        public void PencilRemainingDurabilityIsAccurateAfterWritingAStringWithSpacesTest()
         {
-            Assert.AreEqual(2, pencil.CharacterCount("t t"));
+            pencil.Write("t  t  t", paper, out int remainingDurability);
+            Assert.AreEqual(7, remainingDurability);
         }
 
         [TestMethod]
-        public void PencilWriteMethodPassOutTheNumberOfCharactersWrittenTest()
+        public void PencilWriteMethodPassesOutTheRemainingNumberOfDegradationPointsTest()
         {
-            pencil.Write("hello", paper, out int characterCount);
-            Assert.AreEqual(5, characterCount);
+            pencil.Write("  ", paper, out int remainingDurability);
+            Assert.AreEqual(10, remainingDurability);
         }
 
         [TestMethod]
-        public void PencilWriteMethodDegradesPencilPointByTheIntReturnedByCharacterCountMethodTest()
+        public void PencilWriteMethodDegradesPencilPointAfterWritingAStringWithUppercaseAndPunctuationTest()
         {
-            pencil.Write("hello!", paper, out int characterCount);
-            Assert.AreEqual(4, pencil.RemainingDurability);
+            pencil.Write("Hello!", paper, out int remainingDurability);
+            Assert.AreEqual(3, pencil.RemainingDurability);
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodIgnoresNewlineCharactersInCharacterCountTest()
+        public void PencilWriteIgnoresNewlineCharactersWhenDegradingThePencilPointTest()
         {
-            pencil.Write("Hello\\r\\nWorld", paper, out int characterCount);
-            Assert.AreEqual(12, characterCount);
+            pencil.Write("hi\\r\\nworld", paper, out int remainingDurability);
+            Assert.AreEqual(3, remainingDurability);
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodIgnoresSoloNewLineCharactersTest()
+        public void PencilCharacterCountIgnoresSoloNewLineCharactersTest()
         {
-            pencil.Write("\\r\\n", paper, out int characterCount);
-            Assert.AreEqual(0, characterCount);
+            pencil.Write("\\r\\n", paper, out int remainingDurability);
+            Assert.AreEqual(10, remainingDurability);
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodCountsUppercaseCharactersAsTwoCharacterDegradationPointsTest()
+        public void PencilWriteMethodCountsUppercaseCharactersAsTwoCharacterDegradationPointsTest()
         {
-            pencil.Write("AA", paper, out int characterCount);
-            Assert.AreEqual(4, characterCount);
+            pencil.Write("A", paper, out int remainingDurability);
+            Assert.AreEqual(8, remainingDurability);
         }
         
         [TestMethod]
-        public void CharacterCountMethodReturnsAccurateCountFromStringWithNewLineAndUppercaseCharactersTest()
+        public void PencilWriteMethodReturnsAccurateCountFromStringWithNewLineAndUppercaseCharactersTest()
         {
-            pencil.Write("Hello\\r\\n  ! !", paper, out int characterCount);
-            Assert.AreEqual(8, characterCount);
-
+            pencil.Write("Hello\\r\\n  ! !", paper, out int remainingDurability);
+            Assert.AreEqual(2, remainingDurability);
         }
 
+        [TestMethod]
+        public void PencilWriteMethodWritesEmptySpacesWhenRemainingDurabilityIsZeroTest()
+        {
+            Assert.AreEqual("1 2 3 4 5 6 7 8 9 1 ", pencil.Write("1 2 3 4 5 6 7 8 9 10", paper, out int characterCount));
+        }
 
     }
 }

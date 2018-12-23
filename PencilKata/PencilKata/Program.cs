@@ -6,8 +6,7 @@ namespace PencilKata
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello \r\n World!");
-            Console.ReadLine();
+            Console.WriteLine("Hello World");
         }
     }
 }

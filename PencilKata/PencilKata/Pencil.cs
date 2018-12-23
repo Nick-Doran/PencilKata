@@ -12,42 +12,56 @@ namespace PencilKata
         }
         public int RemainingDurability { get; set; }
 
-        public string Write(string textToWrite, Paper paper, out int characterCount)
+        public string Write(string textToWrite, Paper paper, out int remainingDurability)
         {
-            characterCount = CharacterCount(textToWrite);
-            this.RemainingDurability -= characterCount;
-            paper.Text += textToWrite;
-            return paper.Text;
-        }
-
-        public int CharacterCount(string text)
-        {
-            int characterCount = 0;
-            for(int i =0; i <text.Length; i++)
+            for (int i = 0; i < textToWrite.Length; i++)
             {
-                if(text[i] == ' ')
+                if (textToWrite[i] == ' ')
                 {
+                    paper.Text += ' ';
                     continue;
                 }
-                else if (text[i]== '\\')
+                else if (textToWrite[i] == '\\')
                 {
-                    if (text.Substring(i, 4)== "\\r\\n")
+                    if (textToWrite.Substring(i, 4) == "\\r\\n")
                     {
                         i += 3;
                         continue;
                     }
                 }
-                else if (char.IsUpper(text[i]))
+                else if (char.IsUpper(textToWrite[i]))
                 {
-                    characterCount += 2;
-                    continue;
+                    if (RemainingDurability >= 2)
+                    {
+                        paper.Text += textToWrite[i];
+                        this.RemainingDurability -= 2;
+                        continue;
+                    }
+                    else
+                    {
+                        paper.Text += ' ';
+                        this.RemainingDurability = 0;
+                        continue;
+                    }
                 }
                 else
                 {
-                    characterCount++;
+                    if (RemainingDurability >= 1)
+                    {
+                        paper.Text += textToWrite[i];
+                        this.RemainingDurability -= 1;
+                        continue;
+                    }
+                    else
+                    {
+                        paper.Text += ' ';
+                        continue;
+
+                    }
                 }
             }
-            return characterCount;
+            remainingDurability = this.RemainingDurability;
+            return paper.Text;
         }
     }
 }
