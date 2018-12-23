@@ -31,5 +31,11 @@ namespace PencilKataTests
             pencil.Sharpen();
             Assert.AreEqual(4, pencil.Length);
         }
+        [TestMethod]
+        public void PencilSharpenMethodwillNotSharpenPencilIfPencilLengthIsLessThanOneTest()
+        {
+            pencil.Length = 0;
+            Assert.AreEqual(false, pencil.Sharpen());
+        }
     }
 }
