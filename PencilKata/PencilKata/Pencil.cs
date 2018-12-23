@@ -12,9 +12,9 @@ namespace PencilKata
 
         public Pencil()
         {
-            MaxDurability= 10;
+            MaxDurability = 10;
             RemainingDurability = MaxDurability;
-            Length = 5; 
+            Length = 5;
         }
 
         public string Write(string textToWrite, Paper paper, out int remainingDurability)
@@ -72,13 +72,27 @@ namespace PencilKata
         public bool Sharpen()
         {
             bool isPencilSharpened = false;
-            if(this.Length >= 1)
+            if (this.Length >= 1)
             {
                 this.Length -= 1;
                 this.RemainingDurability = this.MaxDurability;
                 isPencilSharpened = true;
             }
             return isPencilSharpened;
+        }
+
+        public string Edit(Paper paper, string textToEdit)
+        {
+            if (paper.Text.Contains(textToEdit))
+            {
+                int numOfChars = textToEdit.Length;
+                int startIndex = paper.Text.LastIndexOf("text");
+                for (int i = 0; i < numOfChars; i++)
+                {
+                    paper.Text = paper.Text.Replace(paper.Text[startIndex + i], ' ');
+                }
+            }
+            return paper.Text;
         }
     }
 }
