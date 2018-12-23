@@ -6,11 +6,16 @@ namespace PencilKata
 {
     public class Pencil
     {
+        public int MaxDurability { get; set; }
+        public int RemainingDurability { get; set; }
+        public int Length { get; set; }
+
         public Pencil()
         {
-            RemainingDurability = 10;
+            MaxDurability= 10;
+            RemainingDurability = MaxDurability;
+            Length = 5; 
         }
-        public int RemainingDurability { get; set; }
 
         public string Write(string textToWrite, Paper paper, out int remainingDurability)
         {
@@ -62,6 +67,18 @@ namespace PencilKata
             }
             remainingDurability = this.RemainingDurability;
             return paper.Text;
+        }
+
+        public bool Sharpen()
+        {
+            bool isPencilSharpened = false;
+            if(this.Length >= 1)
+            {
+                this.Length -= 1;
+                this.RemainingDurability = this.MaxDurability;
+                isPencilSharpened = true;
+            }
+            return isPencilSharpened;
         }
     }
 }
