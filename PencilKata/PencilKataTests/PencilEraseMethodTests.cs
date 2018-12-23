@@ -7,7 +7,7 @@ using System.Text;
 namespace PencilKataTests
 {
     [TestClass]
-    public class PencilEditMethodTests
+    public class PencilEraseMethodTests
     {
         Paper paper;
         Pencil pencil;
@@ -20,39 +20,39 @@ namespace PencilKataTests
         }
 
         [TestMethod]
-        public void PencilEditMethodRemovesAStringFromtheTextPropertyOfParameterPaperTest()
+        public void PencilEraseMethodRemovesAStringFromtheTextPropertyOfParameterPaperTest()
         {
             paper.Text = "text";
-            pencil.Edit(paper, "text");
+            pencil.Erase(paper, "text");
             Assert.AreEqual("    ", paper.Text);
         }
         [TestMethod]
-        public void PencilEditMethodFindsTheLastInstanceOfTheSpecifiedStringTest()
+        public void PencilEraseMethodFindsTheLastInstanceOfTheSpecifiedStringTest()
         {
             paper.Text = "text text";
-            pencil.Edit(paper, "text");
+            pencil.Erase(paper, "text");
             Assert.AreEqual("text     ", paper.Text);
         }
         [TestMethod]
-        public void PencilEditMethodCanEditMulitpleOccurencesOfTheSameTextTest()
+        public void PencilEraseMethodCanEditMulitpleOccurencesOfTheSameTextTest()
         {
             paper.Text = "text text";
-            pencil.Edit(paper, "text");
+            pencil.Erase(paper, "text");
             Assert.AreEqual("text     ", paper.Text);
-            pencil.Edit(paper, "text");
+            pencil.Erase(paper, "text");
             Assert.AreEqual("         ", paper.Text);
         }
         [TestMethod]
-        public void PencilEditMethodDoesNotEditTextIfTextDoesNotContainTheTextToEditParameterItWasPassed()
+        public void PencilEraseMethodDoesNotEditTextIfTextDoesNotContainTheTextToEditParameterItWasPassed()
         {
             paper.Text = ("text text");
-            Assert.AreEqual("text text", pencil.Edit(paper, "test"));
+            Assert.AreEqual("text text", pencil.Erase(paper, "test"));
         }
         [TestMethod]
-        public void PencilEditMethodRemovesTextToEditMatchesWhenTheyAreNestedInAnotherWordTest()
+        public void PencilEraseMethodRemovesTextToEditMatchesWhenTheyAreNestedInAnotherWordTest()
         {
             paper.Text = "test oneone test";
-            Assert.AreEqual("test one    test", pencil.Edit(paper, "one"));
+            Assert.AreEqual("test one    test", pencil.Erase(paper, "one"));
         }
     }
 }

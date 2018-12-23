@@ -85,18 +85,18 @@ namespace PencilKata
             return isPencilSharpened;
         }
 
-        public string Edit(Paper paper, string textToEdit)
+        public string Erase(Paper paper, string textToEdit)
         {
             if (paper.Text.Contains(textToEdit))
             {
                 StringBuilder sb = new StringBuilder(paper.Text);
                 int numOfChars = textToEdit.Length;
-                int startIndex = paper.Text.LastIndexOf(textToEdit);
+                int startIndex = paper.Text.LastIndexOf(textToEdit) + numOfChars -1; //Editing starts at end of last match of textToEdit
                 for (int i = 0; i < numOfChars; i++)
                 {
                     if (RemainingEraser > 0)
                     {
-                        sb[startIndex + i] = ' ';
+                        sb[startIndex - i] = ' ';
                         this.RemainingEraser -= 1;
                     }
                 }

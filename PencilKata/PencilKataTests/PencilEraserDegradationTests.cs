@@ -23,8 +23,16 @@ namespace PencilKataTests
         {
             paper.Text = "test";
             pencil.RemainingEraser = 0;
-            pencil.Edit(paper, "test");
+            pencil.Erase(paper, "test");
             Assert.AreEqual("test", paper.Text);
+        }
+        [TestMethod]
+        public void PencilEditMethodWillStopErasingFromPaperTextPropertyWhenTheRemainingEraserOfThePencilReachesZeroTest()
+        {
+            paper.Text = "a firetruck";
+            pencil.RemainingEraser = 5;
+            pencil.Erase(paper, "firetruck");
+            Assert.AreEqual("a fire     ", paper.Text);
         }
     }
 }
