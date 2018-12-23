@@ -37,5 +37,14 @@ namespace PencilKataTests
             pencil.Length = 0;
             Assert.AreEqual(false, pencil.Sharpen());
         }
+        [TestMethod]
+        public void PencilSharpenMethodWillNotChangeRemainingDurabilityPropertyIfPencilSharpenMethodReturnsFalseTest()
+        {
+            pencil.Length = 0;
+            pencil.RemainingDurability = 0;
+            pencil.Sharpen();
+            Assert.AreEqual(0, pencil.RemainingDurability);
+        }
+
     }
 }
