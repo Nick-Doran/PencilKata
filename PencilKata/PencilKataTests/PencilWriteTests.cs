@@ -78,7 +78,7 @@ namespace PencilKataTests
         public void PencilCharacterCountMethodIgnoresNewlineCharactersInCharacterCountTest()
         {
             pencil.Write("Hello\\r\\nWorld", paper, out int characterCount);
-            Assert.AreEqual(10, characterCount);
+            Assert.AreEqual(12, characterCount);
         }
 
         [TestMethod]
@@ -95,7 +95,13 @@ namespace PencilKataTests
             Assert.AreEqual(4, characterCount);
         }
         
+        [TestMethod]
+        public void CharacterCountMethodReturnsAccurateCountFromStringWithNewLineAndUppercaseCharactersTest()
+        {
+            pencil.Write("Hello\\r\\n  ! !", paper, out int characterCount);
+            Assert.AreEqual(8, characterCount);
 
+        }
 
 
     }
