@@ -48,5 +48,11 @@ namespace PencilKataTests
             paper.Text = ("text text");
             Assert.AreEqual("text text", pencil.Edit(paper, "test"));
         }
+        [TestMethod]
+        public void PencilEditMethodRemovesTextToEditMatchesWhenTheyAreNestedInAnotherWordTest()
+        {
+            paper.Text = "test oneone test";
+            Assert.AreEqual("test one    test", pencil.Edit(paper, "one"));
+        }
     }
 }
