@@ -42,5 +42,11 @@ namespace PencilKataTests
             pencil.Edit(paper, "text");
             Assert.AreEqual("         ", paper.Text);
         }
+        [TestMethod]
+        public void PencilEditMethodDoesNotEditTextIfTextDoesNotContainTheTextToEditParameterItWasPassed()
+        {
+            paper.Text = ("text text");
+            Assert.AreEqual("text text", pencil.Edit(paper, "test"));
+        }
     }
 }
