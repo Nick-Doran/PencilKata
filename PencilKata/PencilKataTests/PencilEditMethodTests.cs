@@ -32,7 +32,15 @@ namespace PencilKataTests
             paper.Text = "text text";
             pencil.Edit(paper, "text");
             Assert.AreEqual("text     ", paper.Text);
-
+        }
+        [TestMethod]
+        public void PencilEditMethodCanEditMulitpleOccurencesOfTheSameTextTest()
+        {
+            paper.Text = "text text";
+            pencil.Edit(paper, "text");
+            Assert.AreEqual("text     ", paper.Text);
+            pencil.Edit(paper, "text");
+            Assert.AreEqual("         ", paper.Text);
         }
     }
 }

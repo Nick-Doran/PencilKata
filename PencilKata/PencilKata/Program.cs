@@ -6,9 +6,10 @@ namespace PencilKata
     {
         static void Main(string[] args)
         {
-            string test ="Hello World Hello";
-            Console.WriteLine(test.LastIndexOf("Hello"));
-            Console.ReadLine();
+            Pencil pencil = new Pencil();
+            Paper paper = new Paper();
+            paper.Text = "text text";
+            pencil.Edit(paper, "text");
         }
     }
 }

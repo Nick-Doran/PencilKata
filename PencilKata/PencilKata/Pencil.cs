@@ -85,12 +85,14 @@ namespace PencilKata
         {
             if (paper.Text.Contains(textToEdit))
             {
+                StringBuilder sb = new StringBuilder(paper.Text);
                 int numOfChars = textToEdit.Length;
                 int startIndex = paper.Text.LastIndexOf("text");
                 for (int i = 0; i < numOfChars; i++)
                 {
-                    paper.Text = paper.Text.Replace(paper.Text[startIndex + i], ' ');
+                   sb[startIndex+i] = ' ';
                 }
+                paper.Text = sb.ToString();
             }
             return paper.Text;
         }
