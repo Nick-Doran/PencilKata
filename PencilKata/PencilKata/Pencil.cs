@@ -37,6 +37,11 @@ namespace PencilKata
                         continue;
                     }
                 }
+                else if (char.IsUpper(text[i]))
+                {
+                    characterCount += 2;
+                    continue;
+                }
                 else
                 {
                     characterCount++;

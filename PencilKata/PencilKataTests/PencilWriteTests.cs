@@ -88,6 +88,12 @@ namespace PencilKataTests
             Assert.AreEqual(0, characterCount);
         }
 
+        [TestMethod]
+        public void PencilCharacterCountMethodCountsUppercaseCharactersAsTwoCharacterDegradationPointsTest()
+        {
+            pencil.Write("AA", paper, out int characterCount);
+            Assert.AreEqual(4, characterCount);
+        }
         
 
 
