@@ -75,12 +75,21 @@ namespace PencilKataTests
         }
 
         [TestMethod]
-        public void PencilCharacterCountMethodIgnoresNewlineCharactersInCharacterCount()
+        public void PencilCharacterCountMethodIgnoresNewlineCharactersInCharacterCountTest()
         {
             pencil.Write("Hello\\r\\nWorld", paper, out int characterCount);
             Assert.AreEqual(10, characterCount);
         }
-       
+
+        [TestMethod]
+        public void PencilCharacterCountMethodIgnoresSoloNewLineCharactersTest()
+        {
+            pencil.Write("\\r\\n", paper, out int characterCount);
+            Assert.AreEqual(0, characterCount);
+        }
+
+        
+
 
 
     }
