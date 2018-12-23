@@ -25,7 +25,19 @@ namespace PencilKata
             int characterCount = 0;
             for(int i =0; i <text.Length; i++)
             {
-                if(text[i] != ' ')
+                if(text[i] == ' ')
+                {
+                    continue;
+                }
+                else if (text[i]== '\\')
+                {
+                    if (text.Substring(i, 4)== "\\r\\n")
+                    {
+                        i += 3;
+                        continue;
+                    }
+                }
+                else
                 {
                     characterCount++;
                 }

@@ -72,7 +72,13 @@ namespace PencilKataTests
         {
             pencil.Write("hello!", paper, out int characterCount);
             Assert.AreEqual(4, pencil.RemainingDurability);
+        }
 
+        [TestMethod]
+        public void PencilCharacterCountMethodIgnoresNewlineCharactersInCharacterCount()
+        {
+            pencil.Write("Hello\\r\\nWorld", paper, out int characterCount);
+            Assert.AreEqual(10, characterCount);
         }
        
 
