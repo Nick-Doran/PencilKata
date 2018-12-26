@@ -36,5 +36,12 @@ namespace PencilKataTests
             paper.Text = "This is a test string";
             Assert.AreEqual("This is a best string", pencil.Edit(paper, "test", "best"));
         }
+        [TestMethod]
+        public void PencilEditMethodReturnsAStringThatIsTheSameLengthAsTheInputStringTest()
+        {
+            paper.Text = "length of 12";
+            int stringLength = paper.Text.Length;
+            Assert.AreEqual(stringLength,pencil.Edit(paper, "of", "is").Length);
+        }
     }
 }
