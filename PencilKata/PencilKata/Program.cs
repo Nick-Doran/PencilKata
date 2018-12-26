@@ -8,8 +8,8 @@ namespace PencilKata
         {
             Paper paper = new Paper();
             Pencil pencil = new Pencil();
-            paper.Text = "test oneone test";
-            pencil.Edit(paper, "s", "a");
+            paper.Text = "This is a test string";
+            pencil.Edit(paper, "test", "best");
             Console.WriteLine(paper.Text);
             Console.ReadLine();
             

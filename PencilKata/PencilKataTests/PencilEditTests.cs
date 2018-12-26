@@ -7,7 +7,7 @@ using System.Text;
 namespace PencilKataTests
 {
     [TestClass]
-    public class PencilEditTests
+    public class PencilEditMethodTests
     {
         Paper paper;
         Pencil pencil;
@@ -18,19 +18,23 @@ namespace PencilKataTests
             paper = new Paper();
             pencil = new Pencil();
         }
-
         [TestMethod]
         public void PencilEditMethodReceivesErasedStringFromEraseMethodWhenItIsCalledTest()
         {
             paper.Text = "This is a test string";
-            Assert.AreEqual("This is a      string", pencil.Edit(paper, "test", ""));
+            Assert.AreEqual("This is a      string", pencil.Edit(paper, "test", "    "));
         }
-
         [TestMethod]
         public void PencilEditMethodDoesNotChangeTextIfThereIsNotAMatchForTheTextToEraseParameterTest()
         {
             paper.Text = "This is a test string";
             Assert.AreEqual("This is a test string", pencil.Edit(paper, "woof", ""));
+        }
+        [TestMethod]
+        public void PencilEditMethodPutsReplacementTextIntoPaperTextPropertyAfterErasingPreviousTextTest()
+        {
+            paper.Text = "This is a test string";
+            Assert.AreEqual("This is a best string", pencil.Edit(paper, "test", "best"));
         }
     }
 }

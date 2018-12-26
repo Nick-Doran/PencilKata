@@ -92,7 +92,7 @@ namespace PencilKata
             {
                 StringBuilder sb = new StringBuilder(paper.Text);
                 int numOfChars = textToErase.Length;
-                startIndex = paper.Text.LastIndexOf(textToErase) + numOfChars -1; //Editing starts at end of most recent match of textToErase
+                startIndex = paper.Text.LastIndexOf(textToErase) + numOfChars - 1; //Editing starts at end of most recent match of textToErase
                 for (int i = 0; i < numOfChars; i++)
                 {
                     if (RemainingEraser > 0)
@@ -108,7 +108,38 @@ namespace PencilKata
 
         public string Edit(Paper paper, string textToErase, string replacementText)
         {
-            Erase(paper, textToErase, out int startIndex);
+            int startIndex = -1;
+            if (paper.Text.Contains(textToErase))
+            {
+                StringBuilder sb = new StringBuilder(paper.Text);
+                int numOfChars = textToErase.Length;
+                startIndex = paper.Text.LastIndexOf(textToErase);
+                int endOfStringToErase = startIndex + numOfChars - 1; //Editing starts at end of most recent match of textToErase
+                for (int i = 0; i < numOfChars; i++)
+                {
+                    if (RemainingEraser > 0)
+                    {
+                        sb[endOfStringToErase - i] = ' ';
+                        this.RemainingEraser -= 1;
+                    }
+                }
+                paper.Text = sb.ToString();
+            }
+            if (startIndex >= 0)
+            {
+                for (int i = 0; i < replacementText.Length; i++)
+                {
+                    if (paper.Text[startIndex + i] == ' ')
+                    {
+                        paper.Text= paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
+                        paper.Text= paper.Text.Remove(startIndex + i +1, 1);
+                    }
+                    else
+                    {
+                        paper.Text.Replace(paper.Text[startIndex + i], '@');
+                    }
+                }
+            }
             return paper.Text;
         }
     }
