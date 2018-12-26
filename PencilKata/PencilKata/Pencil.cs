@@ -21,7 +21,7 @@ namespace PencilKata
             RemainingEraser = NewEraserDurabilityValue;
         }
 
-        public string Write(string textToWrite, Paper paper, out int remainingDurability)
+        public string Write(string textToWrite, Paper paper)
         {
             for (int i = 0; i < textToWrite.Length; i++)
             {
@@ -30,15 +30,15 @@ namespace PencilKata
                     paper.Text += ' ';
                     continue;
                 }
-                else if (textToWrite[i] == '\\')
+                else if (textToWrite[i] == '\\' && textToWrite.Length > i + 1)
                 {
-                    if (textToWrite.Substring(i, 4) == "\\r\\n")
+                    if (textToWrite.Substring(i, 2) == "\\r" || textToWrite.Substring(i, 2) == "\\n")
                     {
-                        i += 3;
+                        i += 1;
                         continue;
                     }
                 }
-                else if (char.IsUpper(textToWrite[i]))
+                if (char.IsUpper(textToWrite[i]))
                 {
                     if (RemainingDurability >= 2)
                     {
@@ -65,11 +65,9 @@ namespace PencilKata
                     {
                         paper.Text += ' ';
                         continue;
-
                     }
                 }
             }
-            remainingDurability = this.RemainingDurability;
             return paper.Text;
         }
 
@@ -131,8 +129,8 @@ namespace PencilKata
                 {
                     if (paper.Text[startIndex + i] == ' ')
                     {
-                        paper.Text= paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
-                        paper.Text= paper.Text.Remove(startIndex + i +1, 1);
+                        paper.Text = paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
+                        paper.Text = paper.Text.Remove(startIndex + i + 1, 1);
                     }
                     else
                     {

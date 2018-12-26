@@ -28,14 +28,14 @@ namespace PencilKataTests
         [TestMethod]
         public void PaperTextPropertyHoldsTextPassedToItTest()
         {
-            Assert.AreEqual(pencil.Write("1", paper, out int characterCount),paper.Text);
+            Assert.AreEqual(pencil.Write("1", paper),paper.Text);
         }
 
         [TestMethod]
         public void PaperTextPropertyHoldsTextFromMulitipleWrites()
         {
-            Assert.AreEqual(pencil.Write("1", paper, out int characterCount), paper.Text);
-            pencil.Write("2", paper, out characterCount);
+            Assert.AreEqual(pencil.Write("1", paper), paper.Text);
+            pencil.Write("2", paper);
             Assert.AreEqual("12", paper.Text);
         }
     }
