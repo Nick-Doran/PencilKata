@@ -25,5 +25,12 @@ namespace PencilKataTests
             paper.Text = "This is a test string";
             Assert.AreEqual("This is a      string", pencil.Edit(paper, "test", ""));
         }
+
+        [TestMethod]
+        public void PencilEditMethodDoesNotChangeTextIfThereIsNotAMatchForTheTextToEraseParameterTest()
+        {
+            paper.Text = "This is a test string";
+            Assert.AreEqual("This is a test string", pencil.Edit(paper, "woof", ""));
+        }
     }
 }

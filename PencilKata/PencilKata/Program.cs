@@ -9,7 +9,9 @@ namespace PencilKata
             Paper paper = new Paper();
             Pencil pencil = new Pencil();
             paper.Text = "test oneone test";
-            pencil.Erase(paper, "one", out int startIndex);
+            pencil.Edit(paper, "s", "a");
+            Console.WriteLine(paper.Text);
+            Console.ReadLine();
             
         }
     }
