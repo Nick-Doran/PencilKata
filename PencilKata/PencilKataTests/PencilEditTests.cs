@@ -43,5 +43,11 @@ namespace PencilKataTests
             int stringLength = paper.Text.Length;
             Assert.AreEqual(stringLength,pencil.Edit(paper, "of", "is").Length);
         }
+        [TestMethod]
+        public void PencilEditMethodCanPutANewlineCharacterIntoThePaperTextPropertyTest()
+        {
+            paper.Text = "This is a test string";
+            Assert.AreEqual("This is a \r\n   string",pencil.Edit(paper, "test", "\r\n"));
+        }
     }
 }
