@@ -49,5 +49,17 @@ namespace PencilKataTests
             paper.Text = "This is a test string";
             Assert.AreEqual("This is a \r\n   string",pencil.Edit(paper, "test", "\r\n"));
         }
+        [TestMethod]
+        public void PencilEditMethodCanReplaceANewlineCharacterInPaperTextPropertyTest()
+        {
+            paper.Text = "This is a test \r\n string";
+            Assert.AreEqual("This is a test aa string", pencil.Edit(paper, "\r\n", "aa"));
+        }
+        [TestMethod]
+        public void PencilEditMethodReplacesCharactersWithAtSymbolWhenTheCharacterBeingEditedIsNotASpaceTest()
+        {
+            paper.Text = "This is a test string";
+            Assert.AreEqual("This is a be@@ string", pencil.Edit(paper, "te", "best"));
+        }
     }
 }

@@ -136,7 +136,8 @@ namespace PencilKata
                     }
                     else
                     {
-                        paper.Text.Replace(paper.Text[startIndex + i], '@');
+                        paper.Text = paper.Text.Insert(startIndex + i, "@");
+                        paper.Text = paper.Text.Remove(startIndex + i + 1, 1);
                     }
                 }
             }
