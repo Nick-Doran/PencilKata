@@ -23,7 +23,7 @@ namespace PencilKataTests
         {
             paper.Text = "test";
             pencil.RemainingEraser = 0;
-            pencil.Erase(paper, "test");
+            pencil.Erase(paper, "test", out int startIndex);
             Assert.AreEqual("test", paper.Text);
         }
         [TestMethod]
@@ -31,7 +31,7 @@ namespace PencilKataTests
         {
             paper.Text = "a firetruck";
             pencil.RemainingEraser = 5;
-            pencil.Erase(paper, "firetruck");
+            pencil.Erase(paper, "firetruck", out int startIndex);
             Assert.AreEqual("a fire     ", paper.Text);
         }
     }

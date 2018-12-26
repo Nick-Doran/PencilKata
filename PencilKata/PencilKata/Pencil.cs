@@ -25,7 +25,7 @@ namespace PencilKata
         {
             for (int i = 0; i < textToWrite.Length; i++)
             {
-                if (textToWrite[i] == ' ')
+                if (char.IsWhiteSpace(textToWrite[i]))
                 {
                     paper.Text += ' ';
                     continue;
@@ -85,13 +85,14 @@ namespace PencilKata
             return isPencilSharpened;
         }
 
-        public string Erase(Paper paper, string textToEdit)
+        public string Erase(Paper paper, string textToErase, out int startIndex)
         {
-            if (paper.Text.Contains(textToEdit))
+            startIndex = -1;
+            if (paper.Text.Contains(textToErase))
             {
                 StringBuilder sb = new StringBuilder(paper.Text);
-                int numOfChars = textToEdit.Length;
-                int startIndex = paper.Text.LastIndexOf(textToEdit) + numOfChars -1; //Editing starts at end of last match of textToEdit
+                int numOfChars = textToErase.Length;
+                startIndex = paper.Text.LastIndexOf(textToErase) + numOfChars -1; //Editing starts at end of most recent match of textToErase
                 for (int i = 0; i < numOfChars; i++)
                 {
                     if (RemainingEraser > 0)
@@ -102,6 +103,12 @@ namespace PencilKata
                 }
                 paper.Text = sb.ToString();
             }
+            return paper.Text;
+        }
+
+        public string Edit(Paper paper, string textToErase, string replacementText)
+        {
+            Erase(paper, textToErase, out int startIndex);
             return paper.Text;
         }
     }
