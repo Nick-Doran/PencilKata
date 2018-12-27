@@ -123,16 +123,21 @@ namespace PencilKata
                 }
                 paper.Text = sb.ToString();
             }
-            if (startIndex >= 0)
+            if (startIndex >= 0) //Checks if paper.Text contains textToErase
             {
                 for (int i = 0; i < replacementText.Length; i++)
                 {
-                    if (paper.Text[startIndex + i] == ' ')
+                    if (paper.Text[startIndex + i] == ' ' && char.IsUpper(replacementText[i]) && this.RemainingDurability >= 2)
                     {
                         paper.Text = paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
                         paper.Text = paper.Text.Remove(startIndex + i + 1, 1);
                     }
-                    else
+                    else if (paper.Text[startIndex + i] == ' ' && char.IsLower(replacementText[i]) && this.RemainingDurability >= 1)
+                    {
+                            paper.Text = paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
+                            paper.Text = paper.Text.Remove(startIndex + i + 1, 1);
+                    }
+                    else if (paper.Text[startIndex + i] != ' ' && this.RemainingDurability >=1)
                     {
                         paper.Text = paper.Text.Insert(startIndex + i, "@");
                         paper.Text = paper.Text.Remove(startIndex + i + 1, 1);
