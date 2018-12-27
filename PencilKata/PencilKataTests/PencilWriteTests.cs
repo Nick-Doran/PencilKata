@@ -103,7 +103,6 @@ namespace PencilKataTests
             pencil.Write("Hello\\r\\n  ! !", paper);
             Assert.AreEqual(2, pencil.RemainingDurability);
         }
-
         [TestMethod]
         public void PencilWriteMethodWritesEmptySpacesWhenRemainingDurabilityIsZeroTest()
         {
