@@ -15,7 +15,6 @@ namespace PencilKataTests
             pencil = new Pencil();
             paper = new Paper();
         }
-
         [TestMethod]
         public void PencilWriteMethodReturnsAStringTest()
         {
@@ -109,6 +108,12 @@ namespace PencilKataTests
         public void PencilWriteMethodWritesEmptySpacesWhenRemainingDurabilityIsZeroTest()
         {
             Assert.AreEqual("1 2 3 4 5 6 7 8 9 1 ", pencil.Write("1 2 3 4 5 6 7 8 9 10", paper));
+        }
+        [TestMethod]
+        public void CustomPencilConstructorPointDegradationTest()
+        {
+            Pencil customPencil = new Pencil(100, 10, 100);
+            Assert.AreEqual("ABCDEFGHIJKLMNOPQRSTUVWXYZ", customPencil.Write("ABCDEFGHIJKLMNOPQRSTUVWXYZ", paper));
         }
 
     }

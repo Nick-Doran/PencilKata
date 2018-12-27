@@ -21,6 +21,15 @@ namespace PencilKata
             RemainingEraser = NewEraserDurabilityValue;
         }
 
+        public Pencil(int maxPointDurabilityValue, int length, int newEraserDurabilityValue)
+        {
+            this.MaxPointDurabilityValue = maxPointDurabilityValue;
+            this.RemainingDurability = this.MaxPointDurabilityValue;
+            this.Length = length;
+            this.NewEraserDurabilityValue = newEraserDurabilityValue;
+            this.RemainingEraser = this.NewEraserDurabilityValue;
+        }
+
         public string Write(string textToWrite, Paper paper)
         {
             for (int i = 0; i < textToWrite.Length; i++)
@@ -123,7 +132,7 @@ namespace PencilKata
                 }
                 paper.Text = sb.ToString();
             }
-            if (startIndex >= 0) //Checks if paper.Text contains textToErase
+            if (startIndex >= 0) //Checks if paper.Text contained textToErase
             {
                 for (int i = 0; i < replacementText.Length; i++)
                 {
@@ -132,7 +141,7 @@ namespace PencilKata
                         paper.Text = paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
                         paper.Text = paper.Text.Remove(startIndex + i + 1, 1);
                     }
-                    else if (paper.Text[startIndex + i] == ' ' && char.IsLower(replacementText[i]) && this.RemainingDurability >= 1)
+                    else if (paper.Text[startIndex + i] == ' ' && this.RemainingDurability >= 1)
                     {
                             paper.Text = paper.Text.Insert(startIndex + i, replacementText.Substring(i, 1));
                             paper.Text = paper.Text.Remove(startIndex + i + 1, 1);

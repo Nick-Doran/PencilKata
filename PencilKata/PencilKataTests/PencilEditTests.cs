@@ -80,7 +80,6 @@ namespace PencilKataTests
             pencil.RemainingDurability = 0;
             paper.Text = "This is a test string";
             Assert.AreEqual("This is a      string", pencil.Edit(paper, "test", "best"));
-
         }
     }
 }
